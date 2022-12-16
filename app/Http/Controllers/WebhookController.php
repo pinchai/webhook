@@ -25,7 +25,8 @@ class WebhookController extends Controller
         // Return Page contents.
         curl_setopt($newCurl, CURLOPT_RETURNTRANSFER, true);
 
-        return response()->json($newCurl);
+        $output = curl_exec($newCurl);
+        return response($output);
     }
 
 
