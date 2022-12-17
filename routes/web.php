@@ -20,21 +20,12 @@ use Illuminate\Support\Facades\File;
 */
 
 Route::get('/', function () {
-//    $text = 'send_from_localhost';
-//    $chanel_username = 'mit_webhook';
-//    $url = "https://api.telegram.org/bot5442577783:AAHqbqmchMEPsNkyllL6zYG73sBdC_1cyHQ/sendMessage?chat_id=@$chanel_username&text=$text";
-//
-//    // Initialize a CURL session.
-//    $newCurl = curl_init();
-//
-//    //grab URL and pass it to the variable.
-//    curl_setopt($newCurl, CURLOPT_URL, $url);
-//
-//    // Return Page contents.
-//    curl_setopt($newCurl, CURLOPT_RETURNTRANSFER, true);
-//
-//    $output = curl_exec($newCurl);
     return view('welcome');
 });
 
-Route::get('webhook/{chanel_username}/{text}', 'App\Http\Controllers\WebhookController@getUpdate');
+Route::get(
+    'webhook/{chanel_username}/{text}',
+    'App\Http\Controllers\WebhookController@getUpdate'
+);
+
+Route::post('webhook', 'App\Http\Controllers\WebhookController@getUpdate');
